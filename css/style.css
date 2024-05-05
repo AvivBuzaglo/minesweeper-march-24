@@ -1,0 +1,45 @@
+html{
+   background-image: url("/img/background.jpg"); 
+}
+
+body {
+    /* background-color: rgb(255, 255, 255); */
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(0, 0, 0);
+    text-align: center;
+}
+table{
+    display: grid;
+    justify-content: center;
+    border-color: orange;
+}
+
+td{
+    background-color: #f7b559;
+    border: 2px solid orange;
+    text-align: center;
+    width: 60px;
+    height: 40px;
+    transition: 300ms;
+    border-radius: 5px;
+    cursor: pointer;
+    
+}
+
+td:hover {
+   background-color: orangered; 
+}
+
+.cell {
+    content-visibility: hidden;
+}
+
+.show {
+    content-visibility: visible;
+}
+
+.footer{
+    font: optional;
+    font-size: small;
+    margin-top: 0;
+}
