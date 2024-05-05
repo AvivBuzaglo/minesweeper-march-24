@@ -36,6 +36,7 @@ td:hover {
 
 .show {
     content-visibility: visible;
+    background-color: orangered;
 }
 
 .footer{
