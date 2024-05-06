@@ -1,5 +1,6 @@
 html{
-   background-image: url("/img/background.jpg"); 
+   background-image: url("img/background.jpg");
+   background-size: auto;
 }
 
 body {
@@ -43,4 +44,43 @@ td:hover {
     font: optional;
     font-size: small;
     margin-top: 0;
+}
+
+button {
+    background-color: #f7b559;
+    border: 2px solid orange;
+    cursor: pointer;
+    transition: 300ms;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: orangered;
+    transition: 300ms;
+}
+
+.hud {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.flag {
+    background-image: url("img/flag.png");
+    background-size: cover;
+}
+
+.lives {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+}
+
+.restartBtn {
+    height: 50px;
+    width: 50px;
+    background-color: skyblue;
+    border: 2px solid rgb(0, 188, 188);
+    font-size: 27px;
+}
+
+.restartBtn:hover {
+    background-color: aqua;
 }

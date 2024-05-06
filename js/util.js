@@ -37,3 +37,14 @@ function shuffle(array) {
     array.sort(() => Math.random() - 0.5)
     return array
 }
+
+function createArr(board) {
+    var minesArr = []
+    for(var i = 0; i < board.length; i++) { 
+        for(var j = 0; j < board[i].length; j++) {
+            minesArr.push({i: i, j: j})
+        }
+    } 
+    shuffle(minesArr)    
+    return minesArr
+}
