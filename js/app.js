@@ -4,7 +4,13 @@ const MINE = '💣'
 const EMPTY = ' '
 
 var gBoard
-var firstClick = true
+var gFirstClick = true
+var gHintClick = false
+var gTimer 
+var gIntervalId
+var gBestScore_4x4 = Number(localStorage.getItem('4x4 Best score')) || undefined
+var gBestScore_8x8 = Number(localStorage.getItem('8x8 Best score')) || undefined
+var gBestScore_12x12 = Number(localStorage.getItem('12x12 Best score')) || undefined
 
 var gLevel = {
     size: 4,
@@ -16,19 +22,15 @@ var gGame = {
     shownCount: 0,
     markedCount: 0,
     secsPassed: 0,
-    lives: 3
+    lives: 3,
+    hints: 3
 }
 
 function onInit(rows, cols) {
-    firstClick = true
     gBoard = buildBorad(rows, cols)
     renderBoard(gBoard)
-    gGame.isOn = true
+    resetValues()
     gLevel.size = rows
-
-    gGame.lives = 3
-    var elLives = document.querySelector(".lives")
-    elLives.innerHTML = `Lives: ❤️❤️❤️`
 }
 
 function buildBorad(rows = 4, cols = 4) {
@@ -91,8 +93,21 @@ function setMinesNegsCount(board) {
 }
 
 function onCellClick(elCell, i, j) {
-    if(firstClick) {
-        firstClick = false
+    if(gHintClick && !gFirstClick) {
+        gHintClick = false
+        gGame.hints--
+        hintAddShow(i, j)
+        setTimeout(() => hintRemoveShow(i, j), 1000)
+
+        var elImg = document.querySelector('.hints')
+        elImg.innerHTML = '<img src="css/img/hint1.png">'
+
+        return
+    }
+    
+    if(gFirstClick) {
+        gIntervalId = setInterval(timer, 10)
+        gFirstClick = false
         gBoard[i][j].isShow = true
         gGame.shownCount++
         addMinesIdx(gBoard, gLevel.size)
@@ -129,11 +144,6 @@ function onCellClick(elCell, i, j) {
 }
 
 
-function getClassName(position) {
-	const cellClass = `cell-${position.i}-${position.j}`
-	return cellClass
-}
-
 function onRightClick(elCell, i, j) {
     if(gBoard[i][j].isShow === true) return
     
@@ -154,23 +164,30 @@ function onRightClick(elCell, i, j) {
 
 
 function checkGameOver(board) {
+    var elRestartBtn = document.querySelector(".restartBtn")
     if(gGame.markedCount === gLevel.mines && (gGame.shownCount - gLevel.mines) === (board.length*board.length) - gLevel.mines) {
         gGame.isOn = false
-        var elRestartBtn = document.querySelector(".restartBtn")
         elRestartBtn.innerHTML = '🤯'
-        console.log('game over');
+        stopTimer()
+        console.log('game over from 1');
     }
     if(gGame.lives === 0) {
         gGame.isOn = false
-        var elRestartBtn = document.querySelector(".restartBtn")
         elRestartBtn.innerHTML = '🤯'
-        console.log('game over');
+        stopTimer()
+        console.log('game over from 2');
     }
     if(gLevel.mines === 0 && gGame.lives === 0 || gLevel.mines === 0 && gGame.lives < 2 && gLevel.size === 4) {
         gGame.isOn = false
-        var elRestartBtn = document.querySelector(".restartBtn")
         elRestartBtn.innerHTML = '🤯'
-        console.log('game over');
+        stopTimer()
+        console.log('game over from 3');
+    }
+    if(board.length === 4 && gGame.lives === 1) {
+        gGame.isOn = false
+        elRestartBtn.innerHTML = '🤯'
+        stopTimer()
+        console.log('game over from 4');
     }
 }
 
@@ -216,6 +233,29 @@ function checkWin(board) {
 
         var elRestartBtn = document.querySelector(".restartBtn")
         elRestartBtn.innerHTML = '😎'
+        console.log('win from 1');
+        stopTimer()
     }
-    // add more options here tomorrow...
+    if(gGame.shownCount - gLevel.mines === board.length * board[0].length) {
+        gGame.isOn = false
+
+        var elRestartBtn = document.querySelector(".restartBtn")
+        elRestartBtn.innerHTML = '😎'
+        console.log('win from 2');
+        stopTimer()
+    }
+
 }
+
+function giveHint() {
+   if(gGame.hints > 0) {
+        var elImg = document.querySelector('.hints')
+        elImg.innerHTML = '<img src="css/img/hint2.png">' 
+        gHintClick = true
+        
+    } else if (gGame.hints === 0){
+        var elImg = document.querySelector('.hints')
+        elImg.innerHTML = '<img src="css/img/hint3.png">'
+    }
+}
+

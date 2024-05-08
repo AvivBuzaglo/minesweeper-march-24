@@ -11,15 +11,40 @@
         <button class="size-4" onclick="onInit(4, 4)">4*4</button>
         <button class="size-8" onclick="onInit(8, 8)">8*8</button>
         <button class="size-12" onclick="onInit(12, 12)">12*12</button>
+        <span class="timer">|| Time: 00.000</span>
     </div>
 </head>
 <body onload="onInit(4, 4)">
    
-    <table>
+    <table class="game-board">
         <tbody class="board"></tbody>
     </table>
     <P class="footer">Created by Aviv Buzaglo</P>
     <p class="lives">Lives: ❤️❤️❤️</p>
+    <button class="hints" onclick="giveHint()"><img src="css/img/hint1.png"></button>
+
+    <div class="best-scores">
+        <table>
+            <tbody class="best-scores-tbody">
+                <tr>
+                    <th>Board size</th>
+                    <th>Best time</th>
+                </tr>
+                <tr>
+                    <td>4x4 Board</td>
+                    <td id="4x4-score"></td>
+                </tr>
+                <tr>
+                    <td>8x8 Board</td>
+                    <td id="8x8-score"></td>
+                </tr>
+                <tr>
+                    <td>12x12 Board</td>
+                    <td id="12x12-score"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
     <script src="js/app.js"></script>
     <script src="js/util.js"></script>
