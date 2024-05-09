@@ -11,6 +11,7 @@
         <button class="size-4" onclick="onInit(4, 4)">4*4</button>
         <button class="size-8" onclick="onInit(8, 8)">8*8</button>
         <button class="size-12" onclick="onInit(12, 12)">12*12</button>
+        <button class="custom-mode" onclick="manuallySetMines()">Manually Create</button>
         <span class="timer">|| Time: 00.000</span>
     </div>
 </head>
@@ -21,9 +22,17 @@
     </table>
     <P class="footer">Created by Aviv Buzaglo</P>
     <p class="lives">Lives: ❤️❤️❤️</p>
-    <button class="hints" onclick="giveHint()"><img src="css/img/hint1.png"></button>
-
+    
+    <div class="help">
+    <button class="hints" onclick="giveHint()"><img src="css/img/hint1.png"></button> 
+    <button class="safe-click" onclick="safeClick()">3 <br> Safe Clicks</button>
+    <button class="undo" onclick="undo()">Undo Move</button>
+    <button class="mega-hint" onclick="megaHint()">Mega Hint</button>
+    <button class="exterminator" onclick="exterminator()">Exterminator</button>
+    </div>
+    
     <div class="best-scores">
+        <h2>Best times table</h2>
         <table>
             <tbody class="best-scores-tbody">
                 <tr>
