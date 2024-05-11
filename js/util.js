@@ -120,6 +120,9 @@ function resetValues() {
     gFirstClick = true
     gHintClick = false
     gGame.safeClicks = 3
+    gGame.megaHint = 1
+    gMegaHintClicks = 2
+    gMegaHintIdxs = []
     gSavedMoves = []
     
     var elTimer = document.querySelector('.timer')
@@ -181,30 +184,6 @@ function stopTimerOnInit() {
     clearInterval(gIntervalId)
     gTimer = 0
 }
-
-// function removeFirstCellNeighbors(rowIdx , colIdx) {
-//     var originalArr = createArr(gBoard) 
-    
-//     for(var i = 0; i < originalArr.length; i++) {
-//         var currCell = originalArr[i]
-
-//         if(currCell.i === rowIdx && (currCell.j === colIdx -1 || currCell.j === colIdx || currCell.j === colIdx + 1)){
-//             originalArr.splice(i)
-//             console.log('im in');
-//         }
-//         if(currCell.i === rowIdx - 1 && (currCell.j === colIdx -1 || currCell.j === colIdx || currCell.j === colIdx + 1)) {
-//             originalArr.slice(i)
-//         }
-//         if(currCell.i === rowIdx + 1 && (currCell.j === colIdx -1 || currCell.j === colIdx || currCell.j === colIdx + 1)) {
-//             originalArr.slice(i)
-//         }
-//         else continue
-//     }
-//     console.log(originalArr);
-//     return originalArr
-
-// }
-
 
 
 function emptyCellOpen(rowIdx, colIdx) {
@@ -300,13 +279,3 @@ function megaHintHide(topLeftIdx, botoomRightIdx) {
     }
 }
 
-// var nums= []
-// numspop()
-
-// function numspop(){
-//     for(var i = 0; i < 5; i++) {
-//         nums.push(i)
-//     }
-//     var numsPop = nums.pop()
-//     console.log(numsPop);
-// }

@@ -4,6 +4,7 @@ const MINE = '💣'
 const EMPTY = ' '
 
 var gBoard
+var gDarkMode = false
 var gMinesIdxs = []
 var gFirstClick = true
 var gFirstIdx
@@ -34,7 +35,8 @@ var gGame = {
     hints: 3,
     safeClicks: 3,
     megaHint: 1,
-    moves: 0
+    moves: 0,
+    exterminator: 1
 }
 
 
@@ -374,16 +376,57 @@ function megaHint() {
     gMegaHint = true
 }
 
-function exterminator() {
+function exterminator() { 
+    if(gGame.exterminator !== 1) return
     var minesIdxs = shuffle(gMinesIdxs)
     
 
     for(var i = 0; i < 3; i++) {
         var currMine = minesIdxs.pop()
 
+        if(gBoard[currMine.i][currMine.j].isShow || gBoard[currMine.i][currMine.j].isMarked) {
+            i=i
+            continue
+        }
+
         gBoard[currMine.i][currMine.j].isMine = false
         gBoard[currMine.i][currMine.j].minesAroundCount =' '
         gLevel.mines--
     }
+    gGame.exterminator--
     renderBoard(setMinesNegsCount(gBoard))
 }
+
+
+
+function toggleDarkMode() {
+    if(!gDarkMode) {
+    var elLightMode = document.getElementsByTagName('link').item("css/style.css")
+    var elDarkModeBtn = document.querySelector(".dark-mode-toggle")
+
+    elLightMode.href = "css/style-dark-mode.css"
+    elDarkModeBtn.innerText = 'Light mode ☀️'
+    gDarkMode = true
+    }
+    else {
+        var elDarkMode = document.getElementsByTagName('link').item("css/style-dark-mode.css")
+        var elDarkModeBtn = document.querySelector(".dark-mode-toggle")
+
+        elDarkMode.href = "css/style.css"
+        elDarkModeBtn.innerText = 'Dark mode 🌙'
+        gDarkMode = false
+    }
+}
+
+    // open help modal//
+    const elOpenBtn = document.getElementById("openModal")
+    const elCloseBtn = document.getElementById("closeModal")
+    const elModal = document.getElementById("modal")
+
+    elOpenBtn.addEventListener("click", () => {
+        elModal.classList.add("open")
+    })
+
+    elCloseBtn.addEventListener("click", () => {
+        elModal.classList.remove("open")
+    })
