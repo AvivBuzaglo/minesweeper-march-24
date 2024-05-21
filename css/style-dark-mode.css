@@ -1,5 +1,5 @@
 html{
-    background-color: #000000;
+    background-image: url(img/dark-mode.png);
  }
  
  body {
@@ -12,23 +12,26 @@ html{
      display: grid;
      justify-content: center;
      border-color: orange;
+     margin-block-start: 10px;
  }
  
  td{
      /* background-color: #f7b559;
      border: 2px solid orange; */
-     background-color: skyblue;
-     border: 2px solid rgb(0, 188, 188);
+     background-color: firebrick;
+     box-shadow: 0px 0px 5px 7px #750a00 inset;
+     border: 2px solid rgb(252, 0, 0);
      text-align: center;
      width: 40px;
      height: 40px;
      transition: 300ms;
      border-radius: 5px;
      cursor: pointer;
+     color: #000000;
  }
  
  td:hover {
-    background-color: aqua; 
+    background-color: crimson; 
  }
  
  .cell {
@@ -37,7 +40,8 @@ html{
  
  .show {
      content-visibility: visible;
-     background-color: aqua;
+     background-color: crimson;
+     box-shadow: 0px 0px 2px 3px #750a00 inset;
  }
  
  .footer{
@@ -49,8 +53,8 @@ html{
  button .cell {
      /* background-color: #f7b559;
      border: 2px solid orange; */
-     background-color: skyblue;
-     border: 2px solid rgb(0, 188, 188);
+     background-color: firebrick;
+     border: 2px solid rgb(252, 0, 0);
      cursor: pointer;
      transition: 300ms;
      border-radius: 5px;
@@ -62,8 +66,18 @@ html{
  }
  
  .hud {
-     font-family: Arial, Helvetica, sans-serif;
-     font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    border: 2px solid rgb(252, 0, 0);
+    background-color: #004e7500;
+    width: fit-content;
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    text-shadow: 0 0 3px #ff0000, 0 0 5px #ff0033;
  }
  
  .flag {
@@ -75,25 +89,26 @@ html{
      font-family: Arial, Helvetica, sans-serif;
      font-size: 30px;
      font-weight: bold;
+     text-shadow: 0 0 3px #ff0000, 0 0 5px #ff0033;
  }
  
  .restartBtn {
      height: 50px;
      width: 50px;
-     background-color: skyblue;
-     border: 2px solid rgb(0, 188, 188);
+     background-color: firebrick;
+     border: 2px solid rgb(252, 0, 0);;
      font-size: 27px;
      border-radius: 50%;
      cursor: pointer;
  }
  
  .restartBtn:hover {
-     background-color: aqua;
+     background-color: crimson;
  }
  
  .hints{
-     background-color: rgb(255, 255, 255);
-     border: 2px solid rgb(0, 188, 188);
+    background-color: rgba(255, 255, 255, 0.323);
+    border: 2px solid rgb(252, 0, 0);
      border-image: fill;
      border-top-right-radius: 10px; 
      border-bottom-left-radius: 10px; 
@@ -106,12 +121,12 @@ html{
      width: 50px;
  }
  .hints:hover{
-     background-color: aqua;
+     background-color: crimson;
  }
  
  .hud button {
-     background-color: skyblue;
-     border: 2px solid rgb(0, 188, 188);
+     background-color: firebrick;
+     border: 2px solid rgb(252, 0, 0);
      cursor: pointer;
      border-top-right-radius: 10px; 
      border-bottom-left-radius: 10px; 
@@ -121,7 +136,7 @@ html{
  }
  
  .hud button:hover {
-     background-color: aqua;
+     background-color: crimson;
  }
  
  .hintShow {
@@ -137,19 +152,20 @@ html{
      justify-content: center;
  }
  .best-scores th{
-     border-top:1px solid rgb(255, 255, 255);
-     border-bottom:1px solid rgb(255, 255, 255);
-     border-left:1px solid #ffffff;
-     border-right:1px solid #ffffff;
+     border-top:1px solid rgb(252, 0, 0);
+     border-bottom:1px solid rgb(252, 0, 0);
+     border-left:1px solid rgb(252, 0, 0);
+     border-right:1px solid rgb(252, 0, 0);
      width: auto;
      background-color: rgba(255, 255, 255, 0.31);
      cursor: auto;
+     color: #000;
  }
  .best-scores td{
-     border-top:1px solid rgb(255, 255, 255);
-     border-bottom:1px solid rgb(255, 255, 255);
-     border-left:1px solid #ffffff;
-     border-right:1px solid #ffffff;
+     border-top:1px solid rgb(252, 0, 0);
+     border-bottom:1px solid rgb(252, 0, 0);
+     border-left:1px solid rgb(252, 0, 0);
+     border-right:1px solid rgb(252, 0, 0);
      border-radius: 0%;
      width: auto;
      background-color: rgba(255, 255, 255, 0.31);
@@ -157,15 +173,17 @@ html{
      font-style: oblique;
      font-weight: bold;
      cursor: auto;
+     box-shadow: 5px 5px 10px 1px rgb(252, 0, 0);
  }
  
  h2 {
      width: 334.19px;
+     text-shadow: 0 0 3px #ff0000, 0 0 5px #ff0033;
  }
  
  .safe-click{
-     background-color: rgb(255, 255, 255);
-     border: 2px solid rgb(0, 188, 188);
+     background-color: rgba(255, 255, 255, 0.323);
+     border: 2px solid rgb(252, 0, 0);
      height: 56px;
      width: 69px;
      border-top-right-radius: 10px; 
@@ -176,16 +194,17 @@ html{
      text-align: center;
      font-size: 16px;
      font-weight: bold;
+     padding: auto;
  }
  .safe-click:hover {
-     background-color: aqua;
+     background-color: crimson;
  }
  .safe-clicked {
      background-color: rgb(0, 254, 0);
  }
  .undo{
-     background-color: rgb(255, 255, 255);
-     border: 2px solid rgb(0, 188, 188);
+    background-color: rgba(255, 255, 255, 0.323);
+    border: 2px solid rgb(252, 0, 0);
      height: 56px;
      width: 69px;
      border-top-right-radius: 10px; 
@@ -198,7 +217,7 @@ html{
      font-weight: bold;
  }
  .undo:hover {
-     background-color: aqua;
+     background-color: crimson;
  }
  
  .help{
@@ -206,12 +225,12 @@ html{
      align-items: center;
      justify-content: center;
      gap: 10px;
-     color: #ffffff;
+     /* color: #ffffff; */
  }
  
  .mega-hint{
-     background-color: rgb(255, 255, 255);
-     border: 2px solid rgb(0, 188, 188);
+    background-color: rgba(255, 255, 255, 0.323);
+    border: 2px solid rgb(252, 0, 0);
      height: 56px;
      width: 69px;
      border-top-right-radius: 10px; 
@@ -224,11 +243,11 @@ html{
      font-weight: bold;
  }
  .mega-hint:hover {
-    background-color: aqua;
+    background-color: crimson;
  }
  .exterminator {
-     background-color: rgb(255, 255, 255);
-     border: 2px solid rgb(0, 188, 188);
+    background-color: rgba(255, 255, 255, 0.323);
+    border: 2px solid rgb(252, 0, 0);
      height: 56px;
      width: fit-content;
      border-top-right-radius: 10px; 
@@ -242,17 +261,18 @@ html{
  }
 
  .exterminator:hover {
-    background-color: aqua;
+    background-color: crimson;
  }
  #openModal {
-    background-color: skyblue;
-    border: 2px solid rgb(0, 188, 188);
+    background-color: firebrick;
+    border: 2px solid rgb(252, 0, 0);
     cursor: pointer;
     border-top-right-radius: 10px; 
     border-bottom-left-radius: 10px; 
     border-bottom-right-radius: 4px; 
     border-top-left-radius: 4px;
     font-weight: bold;
+    margin-block-start: 20px;
 }
 #closeModal {
     background-color: skyblue;

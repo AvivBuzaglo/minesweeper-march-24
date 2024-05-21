@@ -247,6 +247,7 @@ function onRightClick(elCell, i, j) {
     gGame.moves++
     saveGameState()
     checkEndOfGame(gBoard)
+    document.addEventListener('contextmenu', event => event.preventDefault())
 }
 
 
